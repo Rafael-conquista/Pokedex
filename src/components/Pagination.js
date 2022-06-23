@@ -7,6 +7,8 @@ function Pagination( props ){
              <button onClick={onLeftClick}><div className="pagination-button">🠐</div></button>
              <div>{page} de {totalPages}</div>
              <button onClick={onRightClick}><div className="pagination-button">🠖</div></button>
+             <input placeholder="Buscar página"/>
+             <button>Buscar</button>
         </div>
     )
 }

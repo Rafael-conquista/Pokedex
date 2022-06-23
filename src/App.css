@@ -47,11 +47,16 @@ nav {
   cursor: pointer;
 }
 
-.searchbar-btn :hover{
+.searchbar-btn button:hover{
   background-color: #0e6f9f59;
   transition: 0.5s;
   border-radius: 15px;
   align-items: center;
+}
+
+.searchbar-btn button{
+  transition: 1s;
+  border-radius: 10px;
 }
 
 .pokedex-header {
@@ -64,16 +69,28 @@ nav {
 
 .pokedex-grid {
   display: grid;
-  gap: 10px;
-  grid-template-columns: repeat(3, 1fr);
+  padding-left: 20px;
+  padding-right: 20px;
+  gap: 20px;
+  grid-template-columns: repeat(3, 2fr);
 }
 
 .pokemon-card {
   display: flex;
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  position: relative;
   border-radius: 3px;
   background-color: rgba(220,220,220,0.7);
   align-items: center;
+  transition: 0.5s;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.pokemon-card:hover{
+  transform: translate(0.5%,-2%);
+  margin: -10px;
+  padding-top: 10px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .pokemon-image {
@@ -160,7 +177,7 @@ nav {
   transition: 0.5s;
 }
 
-.pokemon-heart-btn:{
+.pokemon-heart-btn{
   padding: 4px;
   transition: 0.5s;
 }
@@ -169,6 +186,12 @@ nav {
   text-align: center;
   font-size: 1.25rem;
   padding: 20px;
+}
+
+.loading img{
+  color: #0e6f9f;
+  align-items: center;
+  margin: 0px auto;
 }
 
 .App {

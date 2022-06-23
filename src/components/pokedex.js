@@ -1,6 +1,7 @@
 import React from "react";
 import Pagination from "./Pagination";
 import Pokemon from "./Pokemon";
+import Loading from '../img/loading.svg'
 
 const Pokedex = (props) => {
   const { pokemons, loading, page, setPage, totalPages } = props;
@@ -26,7 +27,7 @@ const Pokedex = (props) => {
         />
       </div>
       {loading ? (
-        <div>Carregando</div>
+        <div className="loading"><img src={Loading} alt="Carregando"/></div>
       ) : (
         <div className="pokedex-grid">
           {pokemons && pokemons.map((pokemon, index) => {
