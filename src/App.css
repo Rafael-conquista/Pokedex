@@ -23,6 +23,12 @@ nav {
   padding: 0 20px;
   padding-top: 20px;
   align-items: center;
+  transition: 1s;
+}
+
+.searchbar-container :hover{
+  background-color: rgb(196, 196, 196);
+  transition: 1s;
 }
 
 .searchbar {
@@ -65,6 +71,10 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 10px;
+}​
+
+.fonte{
+  color: white;
 }
 
 .pokedex-grid {
@@ -73,6 +83,20 @@ nav {
   padding-right: 20px;
   gap: 20px;
   grid-template-columns: repeat(3, 2fr);
+  transition: 1s;
+  transform: translate(0%,2%);
+}
+.fade-in{
+  animation: fadeIn 1s;
+}
+
+@keyframes fadeIn{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
 }
 
 .pokemon-card {
@@ -88,9 +112,11 @@ nav {
 
 .pokemon-card:hover{
   transform: translate(0.5%,-2%);
+  border-radius: 10px;
   margin: -10px;
   padding-top: 10px;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: rgb(176, 175, 175);
 }
 
 .pokemon-image {
@@ -143,6 +169,7 @@ nav {
   text-transform: capitalize;
   border-radius: 30px;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  color: white;
 }
 
 .pagination-container {
@@ -152,15 +179,12 @@ nav {
   background-color: rgba(220,220,220,0.4);
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.pagination-container button:hover{
-  background-color: #0e6f9f59;
-  transition: 0.5s;
-  cursor: pointer;
-}
 
-.pagination-container button{
+.input-number{
   border: none;
-  margin: 10px
+  background-color: rgba(220,220,220,0.4);
+  width: 40px;
+  text-align: center;
 }
 
 .pokemon-heart-btn {
@@ -192,6 +216,75 @@ nav {
   color: #0e6f9f;
   align-items: center;
   margin: 0px auto;
+}
+
+.grass-type{
+  background-color:#7cc650;
+}
+.poison-type{
+  background-color:#9a3d9a;
+}
+.fire-type{
+  background-color: #ef8030;
+}
+.flying-type{
+  background-color: #9b85cd;
+}
+
+.water-type{
+  background-color: #6891f2;
+}
+
+.bug-type{
+  background-color: #a8b71f;
+}
+
+.normal-type{
+  background-color: #aaa97b;
+}
+
+.electric-type{
+  background-color: #f5d135;
+}
+
+.ground-type{
+  background-color: #ccae5a;
+}
+
+.fairy-type{
+  background-color: #d69cd6;
+}
+
+.fighting-type{
+  background-color: #bf3027;
+}
+
+.psychic-type{
+  background-color: #f55f8a;
+}
+
+.rock-type{
+  background-color: #b6a038;
+}
+
+.steel-type{
+  background-color: #b7b7d0;
+}
+
+.ice-type{
+  background-color: #97d7d7;
+}
+
+.ghost-type{
+  background-color: #76609e;
+}
+
+.dragon-type{
+  background-color: #4b339c;
+}
+
+.dark-type{
+  background-color: #6f5847;
 }
 
 .App {
