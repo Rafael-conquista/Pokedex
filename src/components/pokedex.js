@@ -13,7 +13,6 @@ const Pokedex = (props) => {
 
   const onChangeHandler = (e) => {
     setSearch(e.target.value)
-    console.log(search)
   }
 
   return (
