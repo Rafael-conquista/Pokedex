@@ -26,8 +26,11 @@ nav {
   transition: 1s;
 }
 
+.favorites_button{
+  margin-left: 20px;
+}
+
 .searchbar-container :hover{
-  background-color: rgb(196, 196, 196);
   transition: 1s;
 }
 

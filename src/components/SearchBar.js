@@ -31,7 +31,7 @@ const Searchbar = (props) => {
             </div>
             <div className="searchbar-btn">
                 <button onClick={onButtonClickHandler} >Buscar</button>
-                <button onClick={onFavoriteClickHandler} >Buscar Favoritos</button>
+                <button className="favorites_button" onClick={onFavoriteClickHandler} >Buscar Favoritos</button>
             </div>
         </div>
     )

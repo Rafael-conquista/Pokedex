@@ -79,28 +79,27 @@ function Home() {
   }
   const onMultipleSearchHandler = async(favorites) =>{
     var data
-    try {
-      setLoading(true);
-      setNotFound(false);
-      for(let i = pokemons.length;i>0;i--){
-        pokemons.pop();
+      try {
+        setLoading(true);
+        setNotFound(false);
+        for(let i = pokemons.length;i>0;i--){
+          pokemons.pop();
+        }
+        for(let i = 0; i<favorites.length;i++){
+          data = await searchPokemon(favorites[i])
+          pokemons.push(data)
+        }
+        if(!pokemons){
+          setNotFound(true)
+        }else{
+          
+          setPage(0)
+          setTotalPages(1)
+        }
+        setLoading(false)
+      } catch (error) {
+        console.log("fetchPokemons error: ", error);
       }
-      for(let i = 0; i<favorites.length;i++){
-        data = await searchPokemon(favorites[i])
-        pokemons.push(data)
-      }
-      console.log(pokemons)
-      if(!pokemons){
-        setNotFound(true)
-      }else{
-        
-        setPage(0)
-        setTotalPages(1)
-      }
-      setLoading(false)
-    } catch (error) {
-      console.log("fetchPokemons error: ", error);
-    }
   }
 
   return (
