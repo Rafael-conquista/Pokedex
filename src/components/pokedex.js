@@ -22,7 +22,6 @@ const Pokedex = (props) => {
         <Pagination
           page={page}
           totalPages={totalPages}
-          //onSubmitButton={onSubmitButtonHandler}
           onChange={onChangeHandler}
         />
       </div>

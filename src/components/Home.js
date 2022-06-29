@@ -75,7 +75,7 @@ function Home() {
       setTotalPages(1)
     }
     setLoading(false)
-
+    console.log(result)
   }
   const onMultipleSearchHandler = async (favorites) => {
     var data
