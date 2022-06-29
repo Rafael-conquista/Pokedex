@@ -1,16 +1,16 @@
-import React, {useState, useContext} from "react";
+import React, { useState, useContext } from "react";
 import FavoriteContext from "../contexts/favoritesContext";
 
 const Searchbar = (props) => {
     const [search, setSearch] = useState("dito")
-    const {onSearch} = props
-    const {onMultipleSearch} = props
-    const {favoritePokemons} = useContext(FavoriteContext)
+    const { onSearch } = props
+    const { onMultipleSearch } = props
+    const { favoritePokemons } = useContext(FavoriteContext)
     const [multipleSearch, setMultipleSearch] = useState(favoritePokemons)
 
     const onChangeHandler = (e) => {
         setSearch(e.target.value)
-        if(e.target.value.length === 0) {
+        if (e.target.value.length === 0) {
             onSearch(undefined)
         }
     }

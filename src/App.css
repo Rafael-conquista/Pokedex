@@ -26,11 +26,11 @@ nav {
   transition: 1s;
 }
 
-.favorites_button{
+.favorites_button {
   margin-left: 20px;
 }
 
-.searchbar-container :hover{
+.searchbar-container :hover {
   transition: 1s;
 }
 
@@ -44,7 +44,7 @@ nav {
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
   border-radius: 3px;
   border: none;
-  background-color: rgba(220,220,220,0.7);
+  background-color: rgba(220, 220, 220, 0.7);
 }
 
 .searchbar-btn button {
@@ -56,14 +56,14 @@ nav {
   cursor: pointer;
 }
 
-.searchbar-btn button:hover{
+.searchbar-btn button:hover {
   background-color: #0e6f9f59;
   transition: 0.5s;
   border-radius: 15px;
   align-items: center;
 }
 
-.searchbar-btn button{
+.searchbar-btn button {
   transition: 1s;
   border-radius: 10px;
 }
@@ -74,9 +74,9 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-}​
+}
 
-.fonte{
+​ .fonte {
   color: white;
 }
 
@@ -87,17 +87,19 @@ nav {
   gap: 20px;
   grid-template-columns: repeat(3, 2fr);
   transition: 1s;
-  transform: translate(0%,2%);
+  transform: translate(0%, 2%);
 }
-.fade-in{
+
+.fade-in {
   animation: fadeIn 1s;
 }
 
-@keyframes fadeIn{
-  from{
+@keyframes fadeIn {
+  from {
     opacity: 0;
   }
-  to{
+
+  to {
     opacity: 1;
   }
 }
@@ -106,15 +108,17 @@ nav {
   display: flex;
   position: relative;
   border-radius: 3px;
-  background-color: rgba(220,220,220,0.7);
+  background-color: rgba(220, 220, 220, 0.7);
   align-items: center;
   transition: 0.5s;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
   cursor: pointer;
 }
 
-.pokemon-card:hover{
-  transform: translate(0.5%,-2%);
+
+
+.pokemon-card:hover {
+  transform: translate(0.5%, -2%);
   border-radius: 10px;
   margin: -10px;
   padding-top: 10px;
@@ -153,6 +157,8 @@ nav {
 .card-top h3 {
   text-transform: capitalize;
   font: bold;
+  color: black;
+  text-decoration: none;
 }
 
 .card-bottom {
@@ -179,13 +185,13 @@ nav {
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: rgba(220,220,220,0.4);
+  background-color: rgba(220, 220, 220, 0.4);
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.input-number{
+.input-number {
   border: none;
-  background-color: rgba(220,220,220,0.4);
+  background-color: rgba(220, 220, 220, 0.4);
   width: 40px;
   text-align: center;
 }
@@ -199,12 +205,12 @@ nav {
   align-items: center;
 }
 
-.pokemon-heart-btn:hover{
+.pokemon-heart-btn:hover {
   padding: 9px;
   transition: 0.5s;
 }
 
-.pokemon-heart-btn{
+.pokemon-heart-btn {
   padding: 4px;
   transition: 0.5s;
 }
@@ -215,78 +221,81 @@ nav {
   padding: 20px;
 }
 
-.loading img{
+.loading img {
   color: #0e6f9f;
   align-items: center;
   margin: 0px auto;
 }
 
-.grass-type{
-  background-color:#7cc650;
+.grass-type {
+  background-color: #7cc650;
 }
-.poison-type{
-  background-color:#9a3d9a;
+
+.poison-type {
+  background-color: #9a3d9a;
 }
-.fire-type{
+
+.fire-type {
   background-color: #ef8030;
 }
-.flying-type{
+
+.flying-type {
   background-color: #9b85cd;
 }
 
-.water-type{
+.water-type {
   background-color: #6891f2;
 }
 
-.bug-type{
+.bug-type {
   background-color: #a8b71f;
 }
 
-.normal-type{
+.normal-type {
   background-color: #aaa97b;
 }
 
-.electric-type{
+.electric-type {
   background-color: #f5d135;
 }
 
-.ground-type{
+.ground-type {
   background-color: #ccae5a;
 }
 
-.fairy-type{
+.fairy-type {
   background-color: #d69cd6;
 }
 
-.fighting-type{
+.fighting-type {
   background-color: #bf3027;
 }
 
-.psychic-type{
+.psychic-type {
   background-color: #f55f8a;
 }
 
-.rock-type{
+.rock-type {
   background-color: #b6a038;
 }
 
-.steel-type{
+.steel-type {
   background-color: #b7b7d0;
 }
 
-.ice-type{
+.ice-type {
   background-color: #97d7d7;
 }
 
-.ghost-type{
+.ghost-type {
   background-color: #76609e;
 }
 
-.dragon-type{
+.dragon-type {
   background-color: #4b339c;
 }
 
-.dark-type{
+.dark-type {
   background-color: #6f5847;
 }
 

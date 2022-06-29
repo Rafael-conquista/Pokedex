@@ -42,7 +42,7 @@ function Home() {
   useEffect(() => {
     loadFavoritePokemons()
   }, []);
-  
+
   useEffect(() => {
     fetchPokemons();
   }, [page]);
@@ -50,9 +50,9 @@ function Home() {
   const updateFavoritePokemons = (name) => {
     const updatedFavorites = [...favorites]
     const favoriteIndex = favorites.indexOf(name)
-    if(favoriteIndex >= 0) {
+    if (favoriteIndex >= 0) {
       updatedFavorites.splice(favoriteIndex, 1);
-    }else {
+    } else {
       updatedFavorites.push(name);
     }
     window.localStorage.setItem(favoritesKey, JSON.stringify(updatedFavorites))
@@ -60,14 +60,14 @@ function Home() {
   }
 
   const onSearchHandler = async (pokemon) => {
-    if(!pokemon) {
+    if (!pokemon) {
       return fetchPokemons();
     }
 
     setLoading(true)
     setNotFound(false)
     const result = await searchPokemon(pokemon)
-    if(!result) {
+    if (!result) {
       setNotFound(true)
     } else {
       setPokemons([result])
@@ -77,29 +77,29 @@ function Home() {
     setLoading(false)
 
   }
-  const onMultipleSearchHandler = async(favorites) =>{
+  const onMultipleSearchHandler = async (favorites) => {
     var data
-      try {
-        setLoading(true);
-        setNotFound(false);
-        for(let i = pokemons.length;i>0;i--){
-          pokemons.pop();
-        }
-        for(let i = 0; i<favorites.length;i++){
-          data = await searchPokemon(favorites[i])
-          pokemons.push(data)
-        }
-        if(!pokemons){
-          setNotFound(true)
-        }else{
-          
-          setPage(0)
-          setTotalPages(1)
-        }
-        setLoading(false)
-      } catch (error) {
-        console.log("fetchPokemons error: ", error);
+    try {
+      setLoading(true);
+      setNotFound(false);
+      for (let i = pokemons.length; i > 0; i--) {
+        pokemons.pop();
       }
+      for (let i = 0; i < favorites.length; i++) {
+        data = await searchPokemon(favorites[i])
+        pokemons.push(data)
+      }
+      if (!pokemons) {
+        setNotFound(true)
+      } else {
+
+        setPage(0)
+        setTotalPages(1)
+      }
+      setLoading(false)
+    } catch (error) {
+      console.log("fetchPokemons error: ", error);
+    }
   }
 
   return (
@@ -110,18 +110,18 @@ function Home() {
       }}
     >
       <div>
-      <Navbar/>
-        <Searchbar onSearch={onSearchHandler} onMultipleSearch = {onMultipleSearchHandler}/>
+        <Navbar />
+        <Searchbar onSearch={onSearchHandler} onMultipleSearch={onMultipleSearchHandler} />
         {notFound ? (
           <div class-name="not-found-text"> Resultado não encontrado :(</div>
-        ) : 
-        (<Pokedex
-          pokemons={pokemons}
-          loading={loading}
-          page={page}
-          setPage={setPage}
-          totalPages={totalPages}
-        />)}
+        ) :
+          (<Pokedex
+            pokemons={pokemons}
+            loading={loading}
+            page={page}
+            setPage={setPage}
+            totalPages={totalPages}
+          />)}
       </div>
     </FavoriteProvider>
   );
