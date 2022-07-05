@@ -13,13 +13,20 @@ function Infos() {
     const [backImageShiny, setBackImageShiny] = useState()
     const [height, setHeight] = useState()
     const [id, setId] = useState()
-    const [types, setTypes] = useState()
+    const [type1, setType1] = useState()
+    const [type2, setType2] = useState()
     const [weight, setWeight] = useState()
-    const [moves, setMoves] = useState()
-    var tipos
+    const [habilidade1, setHabilidade1] = useState()
+    const [habilidade2, setHabilidade2] = useState()
+    const [habilidade3, setHabilidade3] = useState()
     var result
 
     async function fetchPokemon(pokemon) {
+        let tipo1
+        let tipo2
+        let habilidade1
+        let habilidade2
+        let habilidade3
         if (!pokemon) {
             return (
                 <div><h3>Pokemon não foi encontrado</h3></div>
@@ -41,24 +48,44 @@ function Infos() {
             var tipos = result.types.map((type, index) => {
                 return type.type.name
             })
-
+            if(tipos[0]){
+                tipo1 = tipos[0]
+                setType1(tipo1)
+            }
+            if(tipos[1]){
+                tipo2 = tipos[1]
+                setType2(tipo2)
+            }
+        
             const habilidade = result.abilities.map((ability, index) => {
                 return ability.ability.name
             })
+            console.log(habilidade)
 
-            const movimentos = result.moves.map((move, index) => {
-                return move.move.name
-            })
+            if(habilidade[0]){
+                habilidade1 = habilidade[0]
+                setHabilidade1(habilidade1)
+            }
+            if(habilidade[1]){
+                habilidade2 = habilidade[1]
+                setHabilidade2(habilidade2)
+            }
+
+            if(habilidade[2]){
+                habilidade3 = habilidade[2]
+                setHabilidade3(habilidade3)
+            }
+
+
                 setFrontImage(result.sprites.front_default)
                 setFrontImageShiny(result.sprites.front_shiny)
                 setBackImage(result.sprites.back_default)
                 setBackImageShiny(result.sprites.back_shiny)
                 setHeight(result.height)
                 setId(result.id)
-                setTypes(tipos)
                 setAbilities(habilidade)
                 setWeight(result.weight)
-                setMoves(movimentos)
+                console.log()
         }
         //setLoading(false)
     }
@@ -84,7 +111,7 @@ function Infos() {
                         <img className={Styles.images} src={frontImage} alt="n foi"></img>
                     </div>
                     <div>
-                        <h3>{types}</h3>
+                        <h3>{type1} {type2}</h3>
                     </div>
                     
                 </header>
@@ -94,9 +121,10 @@ function Infos() {
                         <h3>weight: {weight}</h3>
                     </div>
                     <div className={Styles.abilities}>
-                        <h3>{abilities}</h3>
+                        <h3>
+                            {habilidade1} {habilidade2} {habilidade3 ? habilidade3 : ""}
+                        </h3>
                     </div>
-                    <h3>{moves}</h3>
                 </body>
             </div>
         </div>

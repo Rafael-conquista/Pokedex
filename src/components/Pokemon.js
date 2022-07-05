@@ -11,7 +11,6 @@ function Pokemon(props) {
     }
     const heart = favoritePokemons.includes(pokemon.name) ? '✓' : '♥'
     let tipo
-
     return (
         <Link to={"/" + pokemon.name} style={{textDecoration:'none'}}>
             <div className="pokemon-card">
@@ -101,6 +100,13 @@ function Pokemon(props) {
             </div>
         </Link>
     )
+}
+
+
+
+function teste(pokemon){
+    console.log(pokemon)
+    return pokemon
 }
 
 export default Pokemon

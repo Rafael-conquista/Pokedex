@@ -32,7 +32,7 @@ const Pokedex = (props) => {
           {pokemons && pokemons.map((pokemon, index) => {
             return (
               <div key={index}>
-                <Pokemon key={index} pokemon={pokemon} />
+                <Pokemon key={index} pokemon={pokemon}/>
               </div>
             );
           })}
