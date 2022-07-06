@@ -108,7 +108,8 @@ function Home() {
         updateFavoritePokemons: updateFavoritePokemons,
       }}
     >
-      <div>
+
+      <div className="all-pages">
         <Navbar />
         <Searchbar onSearch={onSearchHandler} onMultipleSearch={onMultipleSearchHandler} />
         {notFound ? (
