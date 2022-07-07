@@ -1,11 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Link } from 'react-router-dom'
 import FavoriteContext from "../contexts/favoritesContext";
 
 function Pokemon(props) {
     const { favoritePokemons, updateFavoritePokemons } = useContext(FavoriteContext)
     const { pokemon } = props
-    const [isModalVisible, SetIsModalVisible] = useState(false)
     const onHeartClick = () => {
         updateFavoritePokemons(pokemon.name)
     }
@@ -100,13 +99,6 @@ function Pokemon(props) {
             </div>
         </Link>
     )
-}
-
-
-
-function teste(pokemon){
-    console.log(pokemon)
-    return pokemon
 }
 
 export default Pokemon

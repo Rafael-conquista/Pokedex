@@ -6,7 +6,6 @@ import Styles from "./Infos.module.css"
 
 function Infos() {
     const { pokemon } = useParams()
-    const [abilities, setAbilities] = useState()
     const [frontImage, setFrontImage] = useState()
     const [backImage, setBackImage] = useState()
     const [frontImageShiny, setFrontImageShiny] = useState()
@@ -82,11 +81,8 @@ function Infos() {
             setBackImageShiny(result.sprites.back_shiny)
             setHeight(result.height)
             setId(result.id)
-            setAbilities(habilidade)
             setWeight(result.weight)
-            console.log()
         }
-        //setLoading(false)
     }
 
 
@@ -167,33 +163,44 @@ function Infos() {
         <div>
             <Navbar />
             <div className={Styles.page}>
-                <div className={Styles.pokemon_infos}>
-                    <header className={Styles.header}>
-                        <h1 className="tracking-in-expand">#{id} {pokemon}</h1>
-                        <div className={Styles.image_container}>
-                            <img className={Styles.images} src={frontImage} alt="n foi"></img>
-                        </div>
-                        <div className="pokemon-type">
-                            <div className={`pokemon-type-text ${tipo(type1)}`}>
-                                {type1}
-                            </div>
-                            {type2 ? <div className={`pokemon-type-text ${tipo(type2)}`}>
-                                {type2}
-                            </div> : ""}
-                        </div>
 
-                    </header>
-                    <body>
-                        <div className={Styles.characteristics}>
-                            <h3>Height: {height}</h3>
-                            <h3>weight: {weight}</h3>
-                        </div>
-                        <div className={Styles.abilities}>
-                            <h3>
-                                {habilidade1} {habilidade2} {habilidade3 ? habilidade3 : ""}
-                            </h3>
-                        </div>
-                    </body>
+                <div className={Styles.container_pokemon}>
+                    <div className={`${Styles.pokemon_infos} fade-in`}>
+                        <header className={Styles.header}>
+                            <p>#{id}</p>
+                            <h1 className="tracking-in-expand"> {pokemon}</h1>
+                            <div className={Styles.image_container}>
+                                <img className={Styles.images} src={frontImage} alt="n foi"></img>
+                            </div>
+                            <div className="pokemon-type">
+                                <div className={`pokemon-type-text ${tipo(type1)}`}>
+                                    {type1}
+                                </div>
+                                {type2 ? <div className={`pokemon-type-text ${tipo(type2)}`}>
+                                    {type2}
+                                </div> : ""}
+                            </div>
+
+                        </header>
+                        <body>
+                            <div className={Styles.characteristics}>
+                                <h3>Height: {height}</h3>
+                                <h3>weight: {weight}</h3>
+                            </div>
+                            <hr/>
+                            <div className={Styles.abilities}>
+                                <h3>
+                                    {habilidade1}
+                                </h3>
+                                <h3>
+                                    {habilidade2}
+                                </h3>
+                                <h3>
+                                    {habilidade3 ? habilidade3 : ""}
+                                </h3>
+                            </div>
+                        </body>
+                    </div>
                 </div>
             </div>
         </div>
