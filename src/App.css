@@ -196,7 +196,8 @@ nav {
 
 .input-number {
   border: none;
-  background-color: rgba(220, 220, 220, 0.4);
+  color: white;
+  background-color: rgba(220, 220, 220, 0.0);
   width: 40px;
   text-align: center;
 }

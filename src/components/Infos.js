@@ -8,8 +8,7 @@ function Infos() {
     const { pokemon } = useParams()
     const [frontImage, setFrontImage] = useState()
     const [backImage, setBackImage] = useState()
-    const [frontImageShiny, setFrontImageShiny] = useState()
-    const [backImageShiny, setBackImageShiny] = useState()
+    const [imagem, setImagem] = useState(true)
     const [height, setHeight] = useState()
     const [id, setId] = useState()
     const [type1, setType1] = useState()
@@ -74,14 +73,12 @@ function Infos() {
                 setHabilidade3(habilidade3)
             }
 
-
             setFrontImage(result.sprites.front_default)
-            setFrontImageShiny(result.sprites.front_shiny)
             setBackImage(result.sprites.back_default)
-            setBackImageShiny(result.sprites.back_shiny)
             setHeight(result.height)
             setId(result.id)
             setWeight(result.weight)
+            setImagem(frontImage)
         }
     }
 
@@ -94,6 +91,7 @@ function Infos() {
     React.useEffect(() => {
         init();
     }, []);
+
 
     const tipo = (tipo) => {
         switch (tipo) {
@@ -159,6 +157,17 @@ function Infos() {
         return tipo
     }
 
+    function changeImage(){
+        if (imagem === true){
+            setImagem(false)
+            return false
+        }else{
+            setImagem(true)
+            return true
+        }
+    }
+
+
     return (
         <div>
             <Navbar />
@@ -169,9 +178,11 @@ function Infos() {
                         <header className={Styles.header}>
                             <p>#{id}</p>
                             <h1 className="tracking-in-expand"> {pokemon}</h1>
-                            <div className={Styles.image_container}>
-                                <img className={Styles.images} src={frontImage} alt="n foi"></img>
+                            <div className={Styles.image_container} onClick={changeImage}>
+                                {imagem ? <img className={Styles.images} src={backImage} alt="n foi"></img> : <img className={Styles.images} src={frontImage} alt="n foi"></img>}
+                                
                             </div>
+                        
                             <div className="pokemon-type">
                                 <div className={`pokemon-type-text ${tipo(type1)}`}>
                                     {type1}

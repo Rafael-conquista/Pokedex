@@ -46,14 +46,21 @@
 }
 
 .images{
+    display: grid;
     background-color: rgb(176, 175, 175);
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 50%;
-    display: grid;
+    cursor: pointer;
+}
+
+.button{
+    cursor: pointer;
 }
 
 .image_container{
     padding-bottom: 2em;
+    display: flex;
+    flex-direction: row;
 }
 
 .characteristics{
