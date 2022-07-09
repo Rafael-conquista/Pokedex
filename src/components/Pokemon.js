@@ -11,7 +11,7 @@ function Pokemon(props) {
     const heart = favoritePokemons.includes(pokemon.name) ? '✓' : '♥'
     let tipo
     return (
-        <Link to={"/" + pokemon.name} style={{textDecoration:'none'}}>
+        <Link to={"/" + pokemon.id} style={{textDecoration:'none'}}>
             <div className="pokemon-card">
                 <div className="pokemon-image-container">
                     <img alt={pokemon.name} src={pokemon.sprites.front_default} className="pokemon-image" />

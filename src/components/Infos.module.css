@@ -1,7 +1,6 @@
 
 .page{
     display: grid;
-    grid-template-columns: 200px, 200px;
     background: rgb(55,97,168);
     background: linear-gradient(180deg, rgba(55,97,168,1) 37%, rgba(255,255,255,0.5186449579831933) 100%);
     color: white;
@@ -54,7 +53,27 @@
 }
 
 .button{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.button button{
     cursor: pointer;
+    margin-left: 70px;
+    margin-right: 70px;
+    width: 300px;
+    height: 60px;
+    background-color: rgba(176, 175, 175,0.5);
+    color: white;
+    border-style: none;
+    border-radius: 20px;
+    transition: 2s;
+}
+
+.button button:hover{
+    background-color: rgba(176, 175, 175,0.7);
+    font-size: 1.5em;
+    transition: 1s;
 }
 
 .image_container{

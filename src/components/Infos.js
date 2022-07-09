@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import Navbar from "./Navbar";
 import { getPokemonData, getPokemons, searchPokemon } from "../Api";
@@ -9,6 +10,7 @@ function Infos() {
     const [frontImage, setFrontImage] = useState()
     const [backImage, setBackImage] = useState()
     const [imagem, setImagem] = useState(true)
+    const [name, setName] = useState(true)
     const [height, setHeight] = useState()
     const [id, setId] = useState()
     const [type1, setType1] = useState()
@@ -18,6 +20,8 @@ function Infos() {
     const [habilidade2, setHabilidade2] = useState()
     const [habilidade3, setHabilidade3] = useState()
     var result
+    var previousId = id - 1
+    var nextId = id + 1
 
     async function fetchPokemon(pokemon) {
         let tipo1
@@ -79,10 +83,9 @@ function Infos() {
             setId(result.id)
             setWeight(result.weight)
             setImagem(frontImage)
+            setName(result.name)
         }
     }
-
-
 
     function init() {
         fetchPokemon(pokemon)
@@ -92,6 +95,9 @@ function Infos() {
         init();
     }, []);
 
+    React.useEffect(() => {
+        init();
+    }, [pokemon]);
 
     const tipo = (tipo) => {
         switch (tipo) {
@@ -157,32 +163,35 @@ function Infos() {
         return tipo
     }
 
-    function changeImage(){
-        if (imagem === true){
+    function changeImage() {
+        if (imagem === true) {
             setImagem(false)
             return false
-        }else{
+        } else {
             setImagem(true)
             return true
         }
     }
 
-
     return (
         <div>
             <Navbar />
             <div className={Styles.page}>
-
+                <div className={Styles.button}>
+                    {id === 1 ? "" : <Link to= {"/" + previousId}><button>Pokémon Anterior</button></Link>
+                    }
+                    <Link to={"/" + nextId}>
+                        <button>Próximo Pokémon</button>
+                    </Link>
+                </div>
                 <div className={Styles.container_pokemon}>
                     <div className={`${Styles.pokemon_infos} fade-in`}>
                         <header className={Styles.header}>
                             <p>#{id}</p>
-                            <h1 className="tracking-in-expand"> {pokemon}</h1>
+                            <h1 className="tracking-in-expand"> {name}</h1>
                             <div className={Styles.image_container} onClick={changeImage}>
                                 {imagem ? <img className={Styles.images} src={backImage} alt="n foi"></img> : <img className={Styles.images} src={frontImage} alt="n foi"></img>}
-                                
                             </div>
-                        
                             <div className="pokemon-type">
                                 <div className={`pokemon-type-text ${tipo(type1)}`}>
                                     {type1}
@@ -198,7 +207,7 @@ function Infos() {
                                 <h3>Height: {height}</h3>
                                 <h3>weight: {weight}</h3>
                             </div>
-                            <hr/>
+                            <hr />
                             <div className={Styles.abilities}>
                                 <h3>
                                     {habilidade1}
