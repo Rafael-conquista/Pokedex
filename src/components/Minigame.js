@@ -7,25 +7,44 @@ import Style from "./Minigames.module.css"
 function Minigame(){
     const [showGame, setShowGame] = useState(false)
     const [frontImage, setFrontImage] = useState()
-    const [name, setName] = useState(true)
+    const [name, setName] = useState([])
     const [answer, setAnswer] = useState(true)
+    const [pokemon1, setPokemon1] = useState()
+    const [pokemon2, setPokemon2] = useState()
+    const [pokemon3, setPokemon3] = useState()
+    const [rightAnswer, setRightAnswer] = useState(false)
+    const [wrongAnswer, setWrongAnswer] = useState(false)
     const randomPokemon = Math.floor(Math.random() * 905)
-    const wrongPokemon1 = Math.floor(Math.random() * 905)
-    const wrongPokemon2 = Math.floor(Math.random() * 905)
-    const wrongPokemon3 = Math.floor(Math.random() * 905)
 
-    async function fetchPokemon(pokemon){
+    var options = []
+
+    async function fetchPokemon(pokemon,i){
         const result = await searchPokemon(pokemon)
-        setName(result.name)
-        setFrontImage(result.sprites.front_default)
+        if(i === 0){
+            setFrontImage(result.sprites.front_default)
+            setName(result.name)
+        }
+        if(i === 1){
+            setPokemon1(result.name)
+        }
+        if(i === 2){
+            setPokemon2(result.name)
+        }
+        if(i === 3){
+            setPokemon3(result.name)
+        }
     }
 
     function toggleGame() {
-        setShowGame(!showGame) 
+        generateRandonNumbers()
+        for(var cont = 0; cont < 3; cont++){
+            fetchPokemon(options[cont], cont + 1)
+        }
+        setShowGame(!showGame)
     }
 
     function init() {
-        fetchPokemon(randomPokemon)
+        fetchPokemon(randomPokemon,0)
     }
 
     React.useEffect(() => {
@@ -37,10 +56,23 @@ function Minigame(){
     }
 
     const onButtonClickHandler = () => {
+        setRightAnswer(false)
+        setWrongAnswer(false)
         if(answer === name){
-            console.log("está correto")
+            setRightAnswer(true)
+
         }else{
-            console.log("errado")
+            setWrongAnswer(true)
+        }
+    }
+
+    const playAgainHandler = () => {
+        document.location.reload(true)
+    }
+
+    const generateRandonNumbers = () =>{
+        for(var cont=0; cont<3;cont ++){
+            options.push(Math.floor(Math.random()*905))
         }
     }
 
@@ -49,7 +81,7 @@ function Minigame(){
             <Navbar/>
             <div className={Style.wpage}>
                 <h1 className={Style.tittle}> PokéChallenge</h1>
-                <p>Você consegue acertar todos?</p>
+                <p>Quem é esse Pokémon?</p>
                 {!showGame ? 
                     <button className={Style.button} onClick={toggleGame}>
                         Começar
@@ -58,7 +90,6 @@ function Minigame(){
                         <div>
                             <img src={frontImage} alt="n foi"></img>
                         </div>
-                        <form>
                             <input
                                 type="text"
                                 name="name"
@@ -67,10 +98,24 @@ function Minigame(){
                                 onChange={onChangeHandler}
                             />
                             <button type="submit" onClick={onButtonClickHandler}>Responder</button>
-                        </form>
-                        {console.log(name)}
                     </div>
                 }
+                {rightAnswer ? 
+                    <div>
+                        <div> voce acertou!!</div>
+                        <button onClick={playAgainHandler}>Jogar Novamente</button>    
+                    </div>
+                : null}
+                {wrongAnswer ? 
+                    <div>
+                        <div> errouuuuuu!!</div> 
+                        <button onClick={playAgainHandler}>Jogar Novamente</button>    
+                    </div>
+                : null}
+                <div>a. {name}</div>
+                <div>b. {pokemon1}</div>
+                <div>c. {pokemon2}</div>
+                <div>d. {pokemon3}</div>
             </div>
         </div>
     )
