@@ -1,0 +1,25 @@
+.wpage{
+    margin-top: 100px;
+    display: grid;
+    justify-content: center;
+}
+
+.wpage p{
+    font-size: 2em;
+}
+
+.tittle{
+    font-size: 4em;
+}
+
+.button{
+    margin-top: 50px;
+    font-size: 5em;
+    cursor: pointer;
+    background-color: rgba(100, 227, 227, 0.435);
+}
+
+.all{
+    background: rgb(55,97,168);
+    background: linear-gradient(180deg, rgba(55,97,168,1) 37%, rgba(255,255,255,0.5186449579831933) 100%);
+}

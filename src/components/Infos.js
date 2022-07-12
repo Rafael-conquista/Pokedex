@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import Navbar from "./Navbar";
-import { getPokemonData, getPokemons, searchPokemon } from "../Api";
+import { searchPokemon } from "../Api";
 import Styles from "./Infos.module.css"
 
 function Infos() {
@@ -163,16 +163,6 @@ function Infos() {
         return tipo
     }
 
-    function changeImage() {
-        if (imagem === true) {
-            setImagem(false)
-            return false
-        } else {
-            setImagem(true)
-            return true
-        }
-    }
-
     return (
         <div>
             <Navbar />
@@ -189,8 +179,8 @@ function Infos() {
                         <header className={Styles.header}>
                             <p>#{id}</p>
                             <h1 className="tracking-in-expand"> {name}</h1>
-                            <div className={Styles.image_container} onClick={changeImage}>
-                                {imagem ? <img className={Styles.images} src={backImage} alt="n foi"></img> : <img className={Styles.images} src={frontImage} alt="n foi"></img>}
+                            <div className={Styles.image_container}>
+                                <img className={Styles.images} src={frontImage} alt="n foi"></img>
                             </div>
                             <div className="pokemon-type">
                                 <div className={`pokemon-type-text ${tipo(type1)}`}>

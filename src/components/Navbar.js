@@ -1,9 +1,6 @@
-import React, { useContext } from "react"
 import { Link } from 'react-router-dom'
-import FavoriteContext from "../contexts/favoritesContext"
 
 function Navbar() {
-    const { favoritePokemons } = useContext(FavoriteContext)
 
     const logoimg = "https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png"
     return (
@@ -16,6 +13,11 @@ function Navbar() {
                             src={logoimg}
                             className="navbar-img"
                         />
+                    </Link>
+                </div>
+                <div>
+                    <Link to="/minigame" style={{color: 'white'}}>
+                        <h3>Minigame</h3>
                     </Link>
                 </div>
             </nav>
