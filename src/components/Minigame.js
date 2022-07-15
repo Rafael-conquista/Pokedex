@@ -8,15 +8,17 @@ function Minigame() {
     const [showGame, setShowGame] = useState(false)
     const [frontImage, setFrontImage] = useState()
     const [name, setName] = useState([])
-    const [answer, setAnswer] = useState(true)
     const [pokemon1, setPokemon1] = useState()
     const [pokemon2, setPokemon2] = useState()
     const [pokemon3, setPokemon3] = useState()
+    const [pokemon4, setPokemon4] = useState()
     const [rightAnswer, setRightAnswer] = useState(false)
     const [wrongAnswer, setWrongAnswer] = useState(false)
     const randomPokemon = Math.floor(Math.random() * 905)
-
+    const [gameOver,setGameOver] = useState(false)
     var options = []
+    var randomize = Math.floor(Math.random() * 4)
+     
 
     async function fetchPokemon(pokemon, i) {
         const result = await searchPokemon(pokemon)
@@ -33,18 +35,17 @@ function Minigame() {
         if (i === 3) {
             setPokemon3(result.name)
         }
-    }
-
-    function toggleGame() {
-        generateRandonNumbers()
-        for (var cont = 0; cont < 3; cont++) {
-            fetchPokemon(options[cont], cont + 1)
+        if (i === 4) {
+            setPokemon4(result.name)
         }
-        setShowGame(!showGame)
     }
 
     function init() {
         fetchPokemon(randomPokemon, 0)
+        generateRandonNumbers()
+        for (var cont = 0; cont < 4; cont++) {
+            fetchPokemon(options[cont], cont + 1)
+        }
     }
 
     React.useEffect(() => {
@@ -69,25 +70,29 @@ function Minigame() {
     const selectOption1 = () =>{
         var conteudo = document.getElementById("choice1").value
         verificaResposta(conteudo)
+        setGameOver(true)
     }
 
     const selectOption2 = () =>{
         var conteudo = document.getElementById("choice2").value
         verificaResposta(conteudo)
+        setGameOver(true)
     }
 
     const selectOption3 = () =>{
         var conteudo = document.getElementById("choice3").value
         verificaResposta(conteudo)
+        setGameOver(true)
     }
 
     const selectOption4 = () =>{
         var conteudo = document.getElementById("choice4").value
         verificaResposta(conteudo)
+        setGameOver(true)
     }
 
     const generateRandonNumbers = () => {
-        for (var cont = 0; cont < 3; cont++) {
+        for (var cont = 0; cont < 4; cont++) {
             options.push(Math.floor(Math.random() * 905))
         }
     }
@@ -98,56 +103,58 @@ function Minigame() {
             <div className={Style.wpage}>
                 <h1 className={Style.tittle}> PokéChallenge</h1>
                 <p>Quem é esse Pokémon?</p>
-                {!showGame ?
-                    <button className={Style.button} onClick={toggleGame}>
-                        Começar
-                    </button> :
                     <div>
                         <div>
                             <img className={Style.pokephoto} src={frontImage} alt="n foi"></img>
                         </div>
-                        <div className={Style.alternatives_container}>
-                            <button
-                                className={Style.alternatives}
-                                value={name}
-                                id = "choice1"
-                                onClick={selectOption1}>
-                                    {name}
-                            </button>
-                            <button
-                                className={Style.alternatives} 
-                                value={pokemon1}
-                                id = "choice2"
-                                onClick={selectOption2}>
-                                    {pokemon1}
-                            </button>
-                            <button
-                                className={Style.alternatives} 
-                                value={pokemon2}
-                                id="choice3"
-                                onClick={selectOption3}>
-                                    {pokemon2}
-                            </button>
-                            <button
-                             className={Style.alternatives} 
-                             value={pokemon3}
-                             id="choice4"
-                             onClick={selectOption4}>
-                                {pokemon3}
-                            </button>
-                        </div>
+                        {gameOver ? null : 
+                            <div>
+                                <div className={Style.alternatives_container}>
+                                    <button
+                                        className={Style.alternatives}
+                                        value={randomize === 0 ? name : pokemon1}
+                                        id = "choice1"
+                                        onClick={selectOption1}>
+                                            {randomize === 0 ? name : pokemon1}
+                                    </button>
+                                    <button
+                                        className={Style.alternatives} 
+                                        value={randomize === 1 ? name : pokemon2}
+                                        id = "choice2"
+                                        onClick={selectOption2}>
+                                            {randomize === 1 ? name : pokemon2}
+                                    </button>
+                                    <button
+                                        className={Style.alternatives} 
+                                        value={randomize === 2 ? name : pokemon3}
+                                        id="choice3"
+                                        onClick={selectOption3}>
+                                            {randomize === 2 ? name : pokemon3}
+                                    </button>
+                                    <button
+                                    className={Style.alternatives} 
+                                    value={randomize === 3 ? name : pokemon4}
+                                    id="choice4"
+                                    onClick={selectOption4}>
+                                        {randomize === 3 ? name : pokemon4}
+                                    </button>
+                                </div>
+                            </div>
+                        }
                     </div>
-                }
                 {rightAnswer ?
                     <div className={Style.result}>
-                        <div> voce acertou!!</div>
-                        <button onClick={playAgainHandler}>Jogar Novamente</button>
+                        <div> <p>voce acertou!!</p></div>
+                        <button className={Style.playAgain} onClick={playAgainHandler}>Jogar Novamente</button>
                     </div>
                     : null}
                 {wrongAnswer ?
                     <div className={Style.result}>
-                        <div> errouuuuuu!!</div>
-                        <button onClick={playAgainHandler}>Jogar Novamente</button>
+                        <div> 
+                            <p>Resposta incorreta</p>
+                            A resposta era {name}
+                        </div>
+                        <button className={Style.playAgain} onClick={playAgainHandler}>Jogar Novamente</button>
                     </div>
                     : null}
                 <div>
