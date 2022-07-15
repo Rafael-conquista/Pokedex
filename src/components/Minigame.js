@@ -4,7 +4,7 @@ import { searchPokemon } from "../Api";
 import Navbar from "./Navbar";
 import Style from "./Minigames.module.css"
 
-function Minigame(){
+function Minigame() {
     const [showGame, setShowGame] = useState(false)
     const [frontImage, setFrontImage] = useState()
     const [name, setName] = useState([])
@@ -18,50 +18,46 @@ function Minigame(){
 
     var options = []
 
-    async function fetchPokemon(pokemon,i){
+    async function fetchPokemon(pokemon, i) {
         const result = await searchPokemon(pokemon)
-        if(i === 0){
+        if (i === 0) {
             setFrontImage(result.sprites.front_default)
             setName(result.name)
         }
-        if(i === 1){
+        if (i === 1) {
             setPokemon1(result.name)
         }
-        if(i === 2){
+        if (i === 2) {
             setPokemon2(result.name)
         }
-        if(i === 3){
+        if (i === 3) {
             setPokemon3(result.name)
         }
     }
 
     function toggleGame() {
         generateRandonNumbers()
-        for(var cont = 0; cont < 3; cont++){
+        for (var cont = 0; cont < 3; cont++) {
             fetchPokemon(options[cont], cont + 1)
         }
         setShowGame(!showGame)
     }
 
     function init() {
-        fetchPokemon(randomPokemon,0)
+        fetchPokemon(randomPokemon, 0)
     }
 
     React.useEffect(() => {
         init();
     }, []);
 
-    const onChangeHandler = (e) => {
-        setAnswer(e.target.value)
-    }
-
-    const onButtonClickHandler = () => {
+    function verificaResposta(value){
         setRightAnswer(false)
         setWrongAnswer(false)
-        if(answer === name){
+        if (value === name) {
             setRightAnswer(true)
 
-        }else{
+        } else {
             setWrongAnswer(true)
         }
     }
@@ -70,52 +66,93 @@ function Minigame(){
         document.location.reload(true)
     }
 
-    const generateRandonNumbers = () =>{
-        for(var cont=0; cont<3;cont ++){
-            options.push(Math.floor(Math.random()*905))
+    const selectOption1 = () =>{
+        var conteudo = document.getElementById("choice1").value
+        verificaResposta(conteudo)
+    }
+
+    const selectOption2 = () =>{
+        var conteudo = document.getElementById("choice2").value
+        verificaResposta(conteudo)
+    }
+
+    const selectOption3 = () =>{
+        var conteudo = document.getElementById("choice3").value
+        verificaResposta(conteudo)
+    }
+
+    const selectOption4 = () =>{
+        var conteudo = document.getElementById("choice4").value
+        verificaResposta(conteudo)
+    }
+
+    const generateRandonNumbers = () => {
+        for (var cont = 0; cont < 3; cont++) {
+            options.push(Math.floor(Math.random() * 905))
         }
     }
 
-    return(
+    return (
         <div className={Style.all}>
-            <Navbar/>
+            <Navbar />
             <div className={Style.wpage}>
                 <h1 className={Style.tittle}> PokéChallenge</h1>
                 <p>Quem é esse Pokémon?</p>
-                {!showGame ? 
+                {!showGame ?
                     <button className={Style.button} onClick={toggleGame}>
                         Começar
-                    </button> : 
+                    </button> :
                     <div>
                         <div>
-                            <img src={frontImage} alt="n foi"></img>
+                            <img className={Style.pokephoto} src={frontImage} alt="n foi"></img>
                         </div>
-                            <input
-                                type="text"
-                                name="name"
-                                id="name"
-                                placeholder="Digite o nome do Pokémon"
-                                onChange={onChangeHandler}
-                            />
-                            <button type="submit" onClick={onButtonClickHandler}>Responder</button>
+                        <div className={Style.alternatives_container}>
+                            <button
+                                className={Style.alternatives}
+                                value={name}
+                                id = "choice1"
+                                onClick={selectOption1}>
+                                    {name}
+                            </button>
+                            <button
+                                className={Style.alternatives} 
+                                value={pokemon1}
+                                id = "choice2"
+                                onClick={selectOption2}>
+                                    {pokemon1}
+                            </button>
+                            <button
+                                className={Style.alternatives} 
+                                value={pokemon2}
+                                id="choice3"
+                                onClick={selectOption3}>
+                                    {pokemon2}
+                            </button>
+                            <button
+                             className={Style.alternatives} 
+                             value={pokemon3}
+                             id="choice4"
+                             onClick={selectOption4}>
+                                {pokemon3}
+                            </button>
+                        </div>
                     </div>
                 }
-                {rightAnswer ? 
-                    <div>
+                {rightAnswer ?
+                    <div className={Style.result}>
                         <div> voce acertou!!</div>
-                        <button onClick={playAgainHandler}>Jogar Novamente</button>    
+                        <button onClick={playAgainHandler}>Jogar Novamente</button>
                     </div>
-                : null}
-                {wrongAnswer ? 
-                    <div>
-                        <div> errouuuuuu!!</div> 
-                        <button onClick={playAgainHandler}>Jogar Novamente</button>    
+                    : null}
+                {wrongAnswer ?
+                    <div className={Style.result}>
+                        <div> errouuuuuu!!</div>
+                        <button onClick={playAgainHandler}>Jogar Novamente</button>
                     </div>
-                : null}
-                <div>a. {name}</div>
-                <div>b. {pokemon1}</div>
-                <div>c. {pokemon2}</div>
-                <div>d. {pokemon3}</div>
+                    : null}
+                <div>
+
+                </div>
             </div>
         </div>
     )

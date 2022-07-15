@@ -2,6 +2,7 @@
     margin-top: 100px;
     display: grid;
     justify-content: center;
+    color: white;
 }
 
 .wpage p{
@@ -22,4 +23,45 @@
 .all{
     background: rgb(55,97,168);
     background: linear-gradient(180deg, rgba(55,97,168,1) 37%, rgba(255,255,255,0.5186449579831933) 100%);
+}
+.alternatives{
+    height: 60px;
+    width: 200px;
+    display: grid;
+    background-color: rgb(166, 204, 204);
+    cursor: pointer;
+    padding: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    transition: 1s;
+    border: none;
+    font-size: 2em;
+    margin: 5px;
+}
+
+.alternatives:hover{
+    transition: 1s;
+    background-color: aqua;
+    margin: 0.5px;
+}
+
+.alternatives_container{
+    display: grid;
+    margin: 10px;
+    grid-template-columns: repeat(2,0.5fr);
+}
+
+.pokephoto{
+    height: 280px;
+    margin: 20px;
+    display: flex;
+    padding-left: 4em;
+}
+
+.result{
+    color: black;
+    margin: auto;
+    font-size: 2em;
 }
