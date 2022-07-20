@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './components/Home'
-import Infos from './components/Infos'
-import Minigame from './components/Minigame'
+import Infos from './pages/infos/Infos'
+import Minigame from './pages/minigame/Minigame'
 
 function App() {
   return (

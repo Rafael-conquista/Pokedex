@@ -1,11 +1,10 @@
 import React from "react";
 import { useState, useEffect } from 'react'
-import { searchPokemon } from "../Api";
-import Navbar from "./Navbar";
+import { searchPokemon } from "../../Api";
+import Navbar from "../../components/Navbar";
 import Style from "./Minigames.module.css"
 
 function Minigame() {
-    const [showGame, setShowGame] = useState(false)
     const [frontImage, setFrontImage] = useState()
     const [name, setName] = useState([])
     const [pokemon1, setPokemon1] = useState()
@@ -15,7 +14,6 @@ function Minigame() {
     const [rightAnswer, setRightAnswer] = useState(false)
     const [wrongAnswer, setWrongAnswer] = useState(false)
     const randomPokemon = Math.floor(Math.random() * 905)
-    const [gameOver,setGameOver] = useState(false)
     var options = []
     var randomize = Math.floor(Math.random() * 4)
      
@@ -43,9 +41,11 @@ function Minigame() {
     function init() {
         fetchPokemon(randomPokemon, 0)
         generateRandonNumbers()
-        for (var cont = 0; cont < 4; cont++) {
-            fetchPokemon(options[cont], cont + 1)
-        }
+        var cont = 0
+        options.forEach((option)=>{
+            fetchPokemon(option, cont + 1)
+            cont ++
+        })
     }
 
     React.useEffect(() => {
@@ -67,28 +67,9 @@ function Minigame() {
         document.location.reload(true)
     }
 
-    const selectOption1 = () =>{
-        var conteudo = document.getElementById("choice1").value
+    const selectedOption = (e) =>{
+        var conteudo = e.target.value
         verificaResposta(conteudo)
-        setGameOver(true)
-    }
-
-    const selectOption2 = () =>{
-        var conteudo = document.getElementById("choice2").value
-        verificaResposta(conteudo)
-        setGameOver(true)
-    }
-
-    const selectOption3 = () =>{
-        var conteudo = document.getElementById("choice3").value
-        verificaResposta(conteudo)
-        setGameOver(true)
-    }
-
-    const selectOption4 = () =>{
-        var conteudo = document.getElementById("choice4").value
-        verificaResposta(conteudo)
-        setGameOver(true)
     }
 
     const generateRandonNumbers = () => {
@@ -107,35 +88,35 @@ function Minigame() {
                         <div>
                             <img className={Style.pokephoto} src={frontImage} alt="n foi"></img>
                         </div>
-                        {gameOver ? null : 
+                        {rightAnswer || wrongAnswer ? null : 
                             <div>
                                 <div className={Style.alternatives_container}>
                                     <button
                                         className={Style.alternatives}
                                         value={randomize === 0 ? name : pokemon1}
                                         id = "choice1"
-                                        onClick={selectOption1}>
+                                        onClick={selectedOption}>
                                             {randomize === 0 ? name : pokemon1}
                                     </button>
                                     <button
                                         className={Style.alternatives} 
                                         value={randomize === 1 ? name : pokemon2}
                                         id = "choice2"
-                                        onClick={selectOption2}>
+                                        onClick={selectedOption}>
                                             {randomize === 1 ? name : pokemon2}
                                     </button>
                                     <button
                                         className={Style.alternatives} 
                                         value={randomize === 2 ? name : pokemon3}
                                         id="choice3"
-                                        onClick={selectOption3}>
+                                        onClick={selectedOption}>
                                             {randomize === 2 ? name : pokemon3}
                                     </button>
                                     <button
                                     className={Style.alternatives} 
                                     value={randomize === 3 ? name : pokemon4}
                                     id="choice4"
-                                    onClick={selectOption4}>
+                                    onClick={selectedOption}>
                                         {randomize === 3 ? name : pokemon4}
                                     </button>
                                 </div>
@@ -158,7 +139,6 @@ function Minigame() {
                     </div>
                     : null}
                 <div>
-
                 </div>
             </div>
         </div>

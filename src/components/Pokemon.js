@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from 'react-router-dom'
 import FavoriteContext from "../contexts/favoritesContext";
+import TypeStyle from "../utils/DefinePokemonTypeStyle"
 
 function Pokemon(props) {
     const { favoritePokemons, updateFavoritePokemons } = useContext(FavoriteContext)
@@ -9,7 +10,6 @@ function Pokemon(props) {
         updateFavoritePokemons(pokemon.name)
     }
     const heart = favoritePokemons.includes(pokemon.name) ? '✓' : '♥'
-    let tipo
     return (
         <Link to={"/" + pokemon.id} style={{textDecoration:'none'}}>
             <div className="pokemon-card">
@@ -24,68 +24,9 @@ function Pokemon(props) {
                     <div className="card-bottom">
                         <div className="pokemon-type">
                             {pokemon.types.map((type, index) => {
-                                switch (type.type.name) {
-                                    case "grass":
-                                        tipo = "grass-type"
-                                        break
-                                    case "poison":
-                                        tipo = "poison-type"
-                                        break
-                                    case "fire":
-                                        tipo = "fire-type"
-                                        break
-                                    case "flying":
-                                        tipo = "flying-type"
-                                        break
-                                    case "water":
-                                        tipo = "water-type"
-                                        break
-                                    case "bug":
-                                        tipo = "bug-type"
-                                        break
-                                    case "normal":
-                                        tipo = "normal-type"
-                                        break
-                                    case "electric":
-                                        tipo = "electric-type"
-                                        break
-                                    case "ground":
-                                        tipo = "ground-type"
-                                        break
-                                    case "fairy":
-                                        tipo = "fairy-type"
-                                        break
-                                    case "fighting":
-                                        tipo = "fighting-type"
-                                        break
-                                    case "psychic":
-                                        tipo = "psychic-type"
-                                        break
-                                    case "rock":
-                                        tipo = "rock-type"
-                                        break
-                                    case "steel":
-                                        tipo = "steel-type"
-                                        break
-                                    case "ice":
-                                        tipo = "ice-type"
-                                        break
-
-                                    case "ghost":
-                                        tipo = "ghost-type"
-                                        break
-                                    case "dragon":
-                                        tipo = "dragon-type"
-                                        break
-                                    case "dark":
-                                        tipo = "dark-type"
-                                        break
-
-                                    default:
-                                        console.log("outro")
-                                }
+                                const type_style = TypeStyle(type.type.name)
                                 return (
-                                    <div key={index} id="tipo" className={`pokemon-type-text ${tipo}`}>
+                                    <div key={index} id="tipo" className={`pokemon-type-text ${type_style}`}>
                                         {type.type.name}
                                     </div>
                                 )

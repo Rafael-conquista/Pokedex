@@ -1,20 +1,19 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
-import Navbar from "./Navbar";
-import { searchPokemon } from "../Api";
+import Navbar from "../../components/Navbar";
+import { searchPokemon } from "../../Api";
 import Styles from "./Infos.module.css"
+import TypeStyle from "../../utils/DefinePokemonTypeStyle"
 
 function Infos() {
     const { pokemon } = useParams()
     const [frontImage, setFrontImage] = useState()
-    const [backImage, setBackImage] = useState()
-    const [imagem, setImagem] = useState(true)
     const [name, setName] = useState(true)
     const [height, setHeight] = useState()
     const [id, setId] = useState()
-    const [type1, setType1] = useState()
-    const [type2, setType2] = useState()
+    const [type1, setType1] = useState("")
+    const [type2, setType2] = useState("")
     const [weight, setWeight] = useState()
     const [habilidade1, setHabilidade1] = useState()
     const [habilidade2, setHabilidade2] = useState()
@@ -78,11 +77,9 @@ function Infos() {
             }
 
             setFrontImage(result.sprites.front_default)
-            setBackImage(result.sprites.back_default)
             setHeight(result.height)
             setId(result.id)
             setWeight(result.weight)
-            setImagem(frontImage)
             setName(result.name)
         }
     }
@@ -96,79 +93,19 @@ function Infos() {
     }, []);
 
     React.useEffect(() => {
+        setType2("")
         init();
     }, [pokemon]);
-
-    const tipo = (tipo) => {
-        switch (tipo) {
-            case "grass":
-                tipo = "grass-type"
-                break
-            case "poison":
-                tipo = "poison-type"
-                break
-            case "fire":
-                tipo = "fire-type"
-                break
-            case "flying":
-                tipo = "flying-type"
-                break
-            case "water":
-                tipo = "water-type"
-                break
-            case "bug":
-                tipo = "bug-type"
-                break
-            case "normal":
-                tipo = "normal-type"
-                break
-            case "electric":
-                tipo = "electric-type"
-                break
-            case "ground":
-                tipo = "ground-type"
-                break
-            case "fairy":
-                tipo = "fairy-type"
-                break
-            case "fighting":
-                tipo = "fighting-type"
-                break
-            case "psychic":
-                tipo = "psychic-type"
-                break
-            case "rock":
-                tipo = "rock-type"
-                break
-            case "steel":
-                tipo = "steel-type"
-                break
-            case "ice":
-                tipo = "ice-type"
-                break
-
-            case "ghost":
-                tipo = "ghost-type"
-                break
-            case "dragon":
-                tipo = "dragon-type"
-                break
-            case "dark":
-                tipo = "dark-type"
-                break
-
-            default:
-                console.log("outro")
-        }
-        return tipo
-    }
 
     return (
         <div>
             <Navbar />
             <div className={Styles.page}>
                 <div className={Styles.button}>
-                    {id === 1 ? "" : <Link to= {"/" + previousId}><button>Pokémon Anterior</button></Link>
+                    {id === 1 ? "" : 
+                        <Link to={"/" + previousId}>
+                            <button>Pokémon Anterior</button>
+                        </Link>
                     }
                     <Link to={"/" + nextId}>
                         <button>Próximo Pokémon</button>
@@ -183,10 +120,10 @@ function Infos() {
                                 <img className={Styles.images} src={frontImage} alt="n foi"></img>
                             </div>
                             <div className="pokemon-type">
-                                <div className={`pokemon-type-text ${tipo(type1)}`}>
+                                <div className={`pokemon-type-text ${TypeStyle(type1)}`}>
                                     {type1}
                                 </div>
-                                {type2 ? <div className={`pokemon-type-text ${tipo(type2)}`}>
+                                {type2 ? <div className={`pokemon-type-text ${TypeStyle(type2)}`}>
                                     {type2}
                                 </div> : ""}
                             </div>
