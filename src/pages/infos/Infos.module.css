@@ -3,17 +3,20 @@
     display: grid;
     background: rgb(55,97,168);
     background: linear-gradient(180deg, rgba(55,97,168,1) 37%, rgba(255,255,255,0.5186449579831933) 100%);
-    color: white;
+    color: white;  
+    padding-bottom: 10vh;
+    overflow: hidden;
 }
 
 .pokemon_infos{
     width: 500px;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.9);
-    margin: 0px auto;
+    margin: 0px;
     margin-top: 10px;
     background-color: rgba(0, 0, 0, 0.5);
     transition: 2;
     border-radius: 10%;
+    width: 100vw;
 }
 
 .container_pokemon{
@@ -24,7 +27,7 @@
 .header{
     padding-top: 40px;
     padding-bottom: 30px;
-    width: 100%;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -54,13 +57,12 @@
 .button{
     display: flex;
     justify-content: space-evenly;
+    width: 100vw;
 }
 
 .button button{
     cursor: pointer;
-    margin-left: 70px;
-    margin-right: 70px;
-    width: 300px;
+    width: 30vw;
     height: 60px;
     background-color: rgba(176, 175, 175,0.5);
     color: white;
@@ -85,6 +87,8 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    width: 100vw;
+    text-align: center;
 }
 
 .characteristics h3{
@@ -102,6 +106,7 @@
     font-size: 2em;
     margin: 15px;
     padding-bottom: 20px;
+    width: 100vw;
 }
 .abilities h3{
     margin: 0px auto;

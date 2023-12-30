@@ -16,7 +16,7 @@ function Navbar() {
                     </Link>
                 </div>
                 <div>
-                    <Link to="/minigame" style={{color: 'white'}}>
+                    <Link to="/minigame" style={{color: '#e2cd00'}}>
                         <h3>Minigame</h3>
                     </Link>
                 </div>

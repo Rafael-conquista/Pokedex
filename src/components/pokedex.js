@@ -18,7 +18,6 @@ const Pokedex = (props) => {
   return (
     <div>
       <div className="pokedex-header">
-        <h1 className="tracking-in-expand">Pokedex</h1>
         <Pagination
           page={page}
           totalPages={totalPages}

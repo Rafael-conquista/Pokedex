@@ -3,15 +3,24 @@
     display: grid;
     justify-content: center;
     color: white;
+    overflow: hidden;
 }
 
 .wpage p{
-    font-size: 2em;
+    font-size: 3vw;
+    text-align: center;
 }
 
 .tittle{
-    font-size: 4em;
+    font-size: 4vw;
+    text-align: center;
 }
+
+@media screen and (max-width:500px) {
+    .tittle{
+        font-size: 8vw;
+    }
+  }
 
 .button{
     margin-top: 50px;

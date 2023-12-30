@@ -8,7 +8,7 @@ nav {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  background-color: rgba(55,97,168,1);
+  background-color: rgba(55, 97, 168, 1);
   font-size: 20px;
   color: white;
 }
@@ -23,7 +23,9 @@ nav {
   padding: 0 20px;
   padding-top: 20px;
   align-items: center;
+  justify-content: flex-start;
   transition: 1s;
+  padding-bottom: 5vh;
 }
 
 .favorites_button {
@@ -36,21 +38,21 @@ nav {
 
 .searchbar {
   background-color: white;
-  margin-right: 10px;
+  margin: 10px;
+  border-radius: 50px;
 }
 
-.searchbar input {
-  padding: 10px;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+.searchbar input { 
   border-radius: 3px;
   border: none;
-  background-color: rgba(220, 220, 220, 0.7);
+  width: 30vh;
+  height: 50px;
 }
 
 .searchbar-btn button {
   border-radius: 10px;
   border: none;
-  height: 44px;
+  height: 6vh;
   color: black;
   padding: 10px 10px;
   cursor: pointer;
@@ -72,7 +74,7 @@ nav {
 .pokedex-header {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 10px;
   color: white;
@@ -116,8 +118,8 @@ nav {
   transition: 0.5s;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
   cursor: pointer;
-  background: rgb(0,87,198);
-  background: linear-gradient(302deg, rgba(0,87,198,0.24413515406162467) 29%, rgba(25,233,213,0.4009978991596639) 61%);
+  background: rgb(0, 87, 198);
+  background: linear-gradient(302deg, rgba(0, 87, 198, 0.24413515406162467) 29%, rgba(25, 233, 213, 0.4009978991596639) 61%);
 }
 
 
@@ -309,24 +311,87 @@ nav {
   text-align: center;
 }
 
-@media screen and (max-width:600px){
-  .pokedex-grid{
+@media screen and (max-width:600px) {
+  .pokedex-grid {
     flex-direction: column;
     grid-template-columns: repeat(1, 2fr);
   }
 }
 
-@media screen and (min-width:805px){
-  .pokedex-grid{
+@media screen and (min-width:805px) {
+  .pokedex-grid {
     flex-direction: column;
     grid-template-columns: repeat(3, 2fr);
   }
 }
 
-.tracking-in-expand{-webkit-animation:tracking-in-expand 1s cubic-bezier(.215,.61,.355,1.000);animation:tracking-in-expand 1s cubic-bezier(.215,.61,.355,1.000)}
-@-webkit-keyframes tracking-in-expand{0%{letter-spacing:-.5em;opacity:0}40%{opacity:.6}100%{opacity:1}}@keyframes tracking-in-expand{0%{letter-spacing:-.5em;opacity:0}40%{opacity:.6}100%{opacity:1}}
+.tracking-in-expand {
+  -webkit-animation: tracking-in-expand 1s cubic-bezier(.215, .61, .355, 1.000);
+  animation: tracking-in-expand 1s cubic-bezier(.215, .61, .355, 1.000);
+  color: #e2cd00;
+}
 
-.all-pages{
-  background: rgb(55,97,168);
-  background: linear-gradient(180deg, rgba(55,97,168,1) 37%, rgba(255,255,255,0.5186449579831933) 100%);
+@-webkit-keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -.5em;
+    opacity: 0
+  }
+
+  40% {
+    opacity: .6
+  }
+
+  100% {
+    opacity: 1
+  }
+}
+
+@keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -.5em;
+    opacity: 0
+  }
+
+  40% {
+    opacity: .6
+  }
+
+  100% {
+    opacity: 1
+  }
+}
+
+.all-pages {
+  background-color: rgb(55, 97, 168);
+  padding-bottom: 15vh;
+  height: 100vh;
+}
+
+@media screen and (min-width:400px) {
+  .all-pages {
+    height: 270vh;
+  }
+}
+
+@media screen and (min-width:600px) {
+  .all-pages {
+    height: 100vh;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0.90vw;
+}
+
+/* Cor do fundo da scrollbar */
+::-webkit-scrollbar-track {
+  background: rgb(55, 97, 168);
+}
+
+/* Cor do grip (alça) da scrollbar */
+::-webkit-scrollbar-thumb {
+  background: rgb(222, 213, 255);
+  border-radius: 5px;
+  cursor: pointer;
+  height: 2px;
 }
