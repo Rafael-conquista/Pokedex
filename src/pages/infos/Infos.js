@@ -102,7 +102,7 @@ function Infos() {
             <Navbar />
             <div className={Styles.page}>
                 <div className={Styles.button}>
-                    {id === 1 ? "" : 
+                    {id === 1 ? "" :
                         <Link to={"/" + previousId}>
                             <button>Pokémon Anterior</button>
                         </Link>

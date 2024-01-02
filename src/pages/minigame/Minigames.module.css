@@ -1,4 +1,4 @@
-.wpage{
+.wpage {
     margin-top: 100px;
     display: grid;
     justify-content: center;
@@ -6,34 +6,35 @@
     overflow: hidden;
 }
 
-.wpage p{
+.wpage p {
     font-size: 3vw;
     text-align: center;
 }
 
-.tittle{
+.tittle {
     font-size: 4vw;
     text-align: center;
 }
 
 @media screen and (max-width:500px) {
-    .tittle{
+    .tittle {
         font-size: 8vw;
     }
-  }
+}
 
-.button{
+.button {
     margin-top: 50px;
     font-size: 5em;
     cursor: pointer;
     background-color: rgba(100, 227, 227, 0.435);
 }
 
-.all{
-    background: rgb(55,97,168);
-    background: linear-gradient(180deg, rgba(55,97,168,1) 37%, rgba(255,255,255,0.5186449579831933) 100%);
+.all {
+    background: rgb(55, 97, 168);
+    background: linear-gradient(180deg, rgba(55, 97, 168, 1) 37%, rgba(255, 255, 255, 0.5186449579831933) 100%);
 }
-.alternatives{
+
+.alternatives {
     height: 100px;
     width: 200px;
     background-color: rgb(166, 204, 204);
@@ -49,33 +50,33 @@
     margin: 5px;
 }
 
-.alternatives:hover{
+.alternatives:hover {
     transition: 1s;
     background-color: aqua;
     margin: 0.5px;
 }
 
-.alternatives_container{
+.alternatives_container {
     display: grid;
     margin: 10px;
-    grid-template-columns: repeat(2,0.5fr);
+    grid-template-columns: repeat(2, 0.5fr);
 }
 
-.pokephoto{
+.pokephoto {
     height: 280px;
     margin: 20px;
     display: flex;
     padding-left: 4em;
 }
 
-.result{
+.result {
     color: black;
     margin: auto;
     font-size: 2em;
     display: grid;
 }
 
-.playAgain{
+.playAgain {
     border-radius: 10px;
     margin-top: 10px;
     border: none;
@@ -88,7 +89,7 @@
     font-size: 1em;
 }
 
-.playAgain:hover{
+.playAgain:hover {
     background-color: #00ecff;
     transition: 0.5s;
     border-radius: 15px;

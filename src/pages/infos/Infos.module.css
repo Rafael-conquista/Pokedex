@@ -1,14 +1,13 @@
-
-.page{
+.page {
     display: grid;
-    background: rgb(55,97,168);
-    background: linear-gradient(180deg, rgba(55,97,168,1) 37%, rgba(255,255,255,0.5186449579831933) 100%);
-    color: white;  
+    background: rgb(55, 97, 168);
+    background: linear-gradient(180deg, rgba(55, 97, 168, 1) 37%, rgba(255, 255, 255, 0.5186449579831933) 100%);
+    color: white;
     padding-bottom: 10vh;
     overflow: hidden;
 }
 
-.pokemon_infos{
+.pokemon_infos {
     width: 500px;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.9);
     margin: 0px;
@@ -19,12 +18,12 @@
     width: 100vw;
 }
 
-.container_pokemon{
+.container_pokemon {
     transition: 2;
     transform: translate(0%, 2%);
 }
 
-.header{
+.header {
     padding-top: 40px;
     padding-bottom: 30px;
     width: 100vw;
@@ -33,57 +32,59 @@
     justify-content: space-evenly;
     align-items: center;
 }
-.header h1{
+
+.header h1 {
     padding-bottom: 10px;
     font-size: 5em;
 }
-.header p{
+
+.header p {
     padding-bottom: 10px;
     font-size: 3em;
 }
 
-.header img{
+.header img {
     width: 200px;
     height: 200px;
 }
 
-.images{
+.images {
     display: grid;
     background-color: rgb(176, 175, 175);
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 50%;
 }
 
-.button{
+.button {
     display: flex;
     justify-content: space-evenly;
     width: 100vw;
 }
 
-.button button{
+.button button {
     cursor: pointer;
     width: 30vw;
     height: 60px;
-    background-color: rgba(176, 175, 175,0.5);
+    background-color: rgba(176, 175, 175, 0.5);
     color: white;
     border-style: none;
     border-radius: 20px;
     transition: 2s;
 }
 
-.button button:hover{
-    background-color: rgba(176, 175, 175,0.7);
+.button button:hover {
+    background-color: rgba(176, 175, 175, 0.7);
     font-size: 1.5em;
     transition: 1s;
 }
 
-.image_container{
+.image_container {
     padding-bottom: 2em;
     display: flex;
     flex-direction: row;
 }
 
-.characteristics{
+.characteristics {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -91,7 +92,7 @@
     text-align: center;
 }
 
-.characteristics h3{
+.characteristics h3 {
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 50px;
@@ -100,7 +101,7 @@
     font-size: 2em;
 }
 
-.abilities{
+.abilities {
     display: flex;
     flex-direction: column;
     font-size: 2em;
@@ -108,6 +109,7 @@
     padding-bottom: 20px;
     width: 100vw;
 }
-.abilities h3{
+
+.abilities h3 {
     margin: 0px auto;
 }
