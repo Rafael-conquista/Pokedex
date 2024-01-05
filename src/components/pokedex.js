@@ -14,17 +14,20 @@ const Pokedex = (props) => {
 
   const SetNewPage = (e) => {
     const evento = e.target.id
-    if (evento === "avante") {
-      if(page!==totalPages-1){
+    if (pokemons.length == 1){
+      window.location.reload();
+    }
+    else if (evento === "avante") {
+      if (page !== totalPages - 1) {
         setPage(parseInt(page) + 1)
       }
     }
-    if (evento === "retroceder") {
-      if (page !==0){
+    else if (evento === "retroceder") {
+      if (page !== 0) {
         setPage(page - 1)
       }
     }
-    if (evento === "primeira") {
+    else if (evento === "primeira") {
       setPage(0)
     }
     if (evento === "ultima") {

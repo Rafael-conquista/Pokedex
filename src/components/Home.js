@@ -70,9 +70,9 @@ function Home() {
     if (!result) {
       setNotFound(true)
     } else {
+      console.log(result)
       setPokemons([result])
       setPage(0)
-      setTotalPages(1)
     }
     setLoading(false)
   }
@@ -91,9 +91,7 @@ function Home() {
       if (!pokemons) {
         setNotFound(true)
       } else {
-
-        setPage(0)
-        setTotalPages(1)
+        setPage(-1)
       }
       setLoading(false)
     } catch (error) {

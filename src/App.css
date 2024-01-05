@@ -416,6 +416,7 @@ nav {
   padding: 10px 10px;
   cursor: pointer;
   width: 10vw;
+  background: rgb(222, 213, 255);
 }
 
 .page-btn button:hover {
