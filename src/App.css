@@ -19,6 +19,7 @@ nav {
 
 .searchbar-container {
   display: flex;
+  position: relative;
   margin: 0px auto;
   padding: 0 20px;
   padding-top: 20px;
@@ -39,7 +40,6 @@ nav {
 .searchbar {
   background-color: white;
   margin: 10px;
-  border-radius: 50px;
 }
 
 .searchbar input {
@@ -56,6 +56,7 @@ nav {
   color: black;
   padding: 10px 10px;
   cursor: pointer;
+  width: max-content;
 }
 
 .searchbar-btn button:hover {
@@ -430,4 +431,23 @@ nav {
 .page-btn button {
   transition: 1s;
   border-radius: 10px;
+  width: 20vw;
+}
+
+.sugestoes{
+  max-height: 15vh; /* Altura fixa da div */
+  position: absolute; /* Mantém o fluxo normal do documento */
+  overflow-y: scroll;
+  background-color: white;
+  z-index: 500;
+  width: 30vh;
+  border-radius: 0px 0px 0px 50px;
+  text-align: center;
+  line-height: 2;
+  user-select: none;
+}
+
+.nome_sugestoes:hover{
+  background-color: #72d9e0;
+  cursor: pointer;
 }

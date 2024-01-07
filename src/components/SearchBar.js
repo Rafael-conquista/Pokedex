@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import pokemon_names from "./poke_names";
 
 const Searchbar = (props) => {
@@ -10,8 +10,18 @@ const Searchbar = (props) => {
         if (string.length > 1){
            let similar_list = pokemon_names.filter(elemento => elemento.toLowerCase().startsWith(string))
            setList(similar_list)
+           //precisa substituir quando clicar em um dos nome
+           //arrumar a estilização
            console.log(list)
         }
+    }
+
+    const handleSearch = (e) =>{
+        console.log(e.target.textContent)
+        const element = document.getElementById("search")
+        element.value = e.target.textContent
+        setSearch(element.value)
+        setList([])
     }
 
     const onChangeHandler = (e) => {
@@ -33,23 +43,26 @@ const Searchbar = (props) => {
     }
 
     return (
-        <div className="searchbar-container">
-            <div className="searchbar">
-                <input placeholder="Buscar pokemon" onChange={onChangeHandler} id="search" />
-                <div>
-                    {list.map((name) => {
-                        return (
-                            <div className=''>
-                                <span>{name}</span>
-                            </div>
-                        )
-                    })}
+        <div>
+            <div className="searchbar-container">
+                <div className="searchbar">
+                    <input placeholder="Buscar pokemon" onChange={onChangeHandler} id="search" autoComplete="off"/>
+                    <div className='sugestoes'>
+                        {list.map((name) => {
+                            return (
+                                <div className="nome_sugestoes" onClick={handleSearch}>
+                                    <span id={name}>{name}</span>
+                                </div>
+                            )
+                        })}
+                    </div>
+                </div>
+                <div className="searchbar-btn">
+                    <button onClick={onButtonClickHandler} >Buscar</button>
                 </div>
             </div>
-            <div className="searchbar-btn">
-                <button onClick={onButtonClickHandler} >Buscar</button>
-            </div>
         </div>
+        
     )
 }
 
